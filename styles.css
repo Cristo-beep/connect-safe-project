@@ -1,0 +1,934 @@
+:root {
+    --azul: #4A90E2;
+    --azul-oscuro: #3A7BC8;
+    --blanco: #FFFFFF;
+    --verde-pastel: #A8E6CF;
+    --gris-claro: #F5F5F5;
+    --gris: #E0E0E0;
+    --texto: #333333;
+    --gris-correa: #3d3d3d; /* Nuevo color para la correa */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    color: var(--texto);
+    background-color: var(--blanco);
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* ======================================== */
+/* ==== ESTILOS PARA EL VIDEO (SPLASH) ==== */
+/* ======================================== */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--blanco); /* Fondo blanco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Encima de todo */
+}
+
+.splash-screen video {
+    /* Ajusta el tamaño del video como prefieras */
+    width: 300px; 
+    height: 300px;
+    object-fit: contain;
+}
+/* ======================================== */
+
+/* Modal de Términos y Condiciones */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    
+    /* MODIFICACIÓN: Oculto por defecto */
+    display: none; 
+    
+    justify-content: center;
+    align-items: center;
+    z-index: 9998; /* Un z-index alto, pero menor que el splash */
+}
+
+.modal-content {
+    background-color: var(--blanco);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    background-color: var(--azul);
+    color: var(--blanco);
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-header h2 {
+    font-size: 1.8rem;
+}
+
+.modal-body {
+    padding: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.modal-body h3 {
+    color: var(--azul);
+    margin: 20px 0 10px;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+}
+
+.modal-body ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-body li {
+    margin-bottom: 8px;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    background-color: var(--gris-claro);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container input {
+    margin-right: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--azul);
+    color: var(--blanco);
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--azul-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn:disabled {
+    background-color: var(--gris);
+    cursor: not-allowed;
+    /* Quitar efectos hover cuando está deshabilitado */
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128C7E;
+}
+
+/* Header */
+header {
+    background-color: var(--blanco);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    color: var(--azul);
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+/* Estilo para la imagen del logo */
+.logo-img {
+    height: 35px; /* <-- ¡Ajusta este número! */
+    width: auto;  /* Esto evita que la imagen se deforme */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--texto);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--azul);
+}
+
+/* ============================================== */
+/* ===== HERO SECTION MODIFICADA (INICIO) ===== */
+/* ============================================== */
+.hero {
+    background: linear-gradient(135deg, var(--azul) 0%, var(--verde-pastel) 100%);
+    color: var(--blanco);
+    padding: 60px 0; /* Un poco menos de padding vertical */
+    overflow: hidden; /* Para las animaciones */
+}
+
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px; /* Espacio entre texto e imagen */
+}
+
+.hero-text {
+    flex: 1; /* La columna de texto ocupa el espacio disponible */
+    max-width: 600px;
+    /* Animación de entrada */
+    animation: fadeInFromLeft 0.8s ease-out;
+}
+
+.hero-text h2 {
+    font-size: 2.8rem; /* Un poco más grande */
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.hero-text p {
+    font-size: 1.15rem; /* Un poco más pequeño para balancear el título */
+    margin-bottom: 30px;
+}
+
+/* Animación de pulso para el botón */
+.hero .btn {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.hero-image {
+    flex: 1; /* La columna de imagen ocupa el espacio */
+    max-width: 450px; /* Tamaño máximo de la imagen */
+    text-align: center;
+     /* Animación de entrada */
+    animation: fadeInFromRight 0.8s ease-out;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Definición de las animaciones */
+@keyframes fadeInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+/* ============================================ */
+/* ===== HERO SECTION MODIFICADA (FIN) ===== */
+/* ============================================ */
+
+/* Features Section */
+.features {
+    padding: 80px 0;
+    background-color: var(--gris-claro);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    color: var(--azul);
+    margin-bottom: 15px;
+}
+
+.section-title p {
+    color: var(--texto);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: var(--blanco);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background-color: var(--verde-pastel);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: var(--azul);
+    font-size: 30px;
+}
+
+.feature-card h3 {
+    margin-bottom: 15px;
+    color: var(--azul);
+}
+
+/* ============================================== */
+/* ===== BOCETO PULSERA MODIFICADO (INICIO) ===== */
+/* ============================================== */
+.product {
+    padding: 80px 0;
+}
+
+.product-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.product-image {
+    flex: 1;
+    text-align: center;
+    /* Ajuste para centrar el nuevo boceto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+/* Nuevo contenedor del boceto */
+.pulsera-sketch {
+    width: 180px; /* Ancho de la caja */
+    position: relative;
+}
+
+/* Caja de la pantalla (carcasa) */
+.pulsera-display {
+    width: 180px;
+    height: 220px;
+    background-color: var(--gris-correa); /* Color carcasa oscuro */
+    border-radius: 30px; /* Bordes más redondeados */
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 
+                inset 0 2px 2px rgba(255, 255, 255, 0.1); /* Sombra 3D */
+    position: relative;
+    z-index: 10;
+    
+    /* ===== ¡AQUÍ ESTÁ LA CORRECCIÓN! ===== */
+    /* Empuja la pantalla hacia abajo para dar espacio a la correa */
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+/* Pantalla interna */
+.screen {
+    width: 100%;
+    height: 100%;
+    background-color: #000; /* Pantalla apagada (negro) */
+    border-radius: 15px; /* Bordes internos */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2; /* Encima del efecto de cristal */
+    overflow: hidden; /* Para contener el efecto */
+}
+
+/* Efecto de cristal/brillo */
+.pulsera-shine-effect {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0) 50%
+    );
+    transform: rotate(15deg);
+    z-index: 1; /* Debajo del contenido, encima del fondo */
+}
+
+
+.location-info {
+    display: flex;
+    align-items: center;
+    color: var(--blanco); /* Texto blanco sobre fondo negro */
+    font-weight: bold;
+    z-index: 3; /* Encima de todo */
+}
+
+.location-info i {
+    margin-right: 8px;
+    color: var(--azul); /* Icono de pin azul */
+}
+
+.battery {
+    width: 100%;
+    height: 15px;
+    background-color: #333; /* Fondo de batería oscuro */
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 3; /* Encima de todo */
+}
+
+.battery-level {
+    width: 80%;
+    height: 100%;
+    background-color: var(--verde-pastel);
+    border-radius: 10px;
+}
+
+/* Correas (superior e inferior) */
+.pulsera-band-top,
+.pulsera-band-bottom {
+    width: 140px; /* Más angosta que la caja */
+    height: 120px; /* Altura de la correa */
+    background-color: var(--gris-correa); /* Color de la correa */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.2), 
+                inset 0 -3px 5px rgba(0,0,0,0.2); /* Sombra interna para 3D */
+}
+
+/* Correa Superior */
+.pulsera-band-top {
+    top: 0;
+    border-radius: 20px 20px 0 0;
+    z-index: 5; /* Debajo de la pantalla */
+}
+
+/* Correa Inferior */
+.pulsera-band-bottom {
+    bottom: 0;
+    border-radius: 0 0 20px 20px;
+    z-index: 5; /* Debajo de la pantalla */
+}
+
+/* ============================================== */
+/* ===== BOCETO PULSERA MODIFICADO (FIN) ====== */
+/* ============================================== */
+
+.product-info {
+    flex: 1;
+}
+
+.product-info h2 {
+    font-size: 2rem;
+    color: var(--azul);
+    margin-bottom: 20px;
+}
+
+.product-info p {
+    margin-bottom: 20px;
+}
+
+.product-features {
+    margin: 30px 0;
+}
+
+.product-feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.product-feature i {
+    color: var(--azul);
+    margin-right: 10px;
+}
+
+/* ================================================= */
+/* ==== ESTILOS PARA LA NUEVA TARJETA DE RUTA ==== */
+/* ================================================= */
+
+/* Contenedor principal de la nueva demo */
+.route-demo-card {
+    background-color: var(--gris-claro); /* Fondo gris claro */
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    margin-top: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Sombra suave */
+}
+
+/* Icono grande de ruta */
+.route-demo-card .route-demo-icon {
+    font-size: 30px;
+    color: var(--azul);
+    margin-bottom: 10px;
+}
+
+.route-demo-card h3 {
+    color: var(--azul);
+    margin-bottom: 10px;
+}
+
+/* Párrafo de descripción */
+.route-demo-card .route-demo-description {
+    font-size: 0.95rem; /* Letra un poco más pequeña */
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* La tarjeta blanca interna que simula la app */
+.route-example {
+    background-color: var(--blanco);
+    border-radius: 8px;
+    border: 1px solid var(--gris);
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Estilo para las líneas "Desde" y "Hasta" */
+.route-example .route-leg {
+    display: flex;
+    align-items: center;
+    font-size: 1.05rem; /* Tamaño de letra legible */
+    font-weight: 500;
+}
+
+.route-example .route-leg i {
+    font-size: 18px;
+    margin-right: 12px;
+    width: 20px; /* Ancho fijo para alinear */
+    text-align: center;
+}
+
+/* Puntos suspensivos... */
+.route-example .route-dots {
+    font-size: 8px;
+    color: var(--gris);
+    margin: 6px 0 6px 32px; /* Alineado con el texto */
+    letter-spacing: 2px;
+}
+
+/* Detalles de tiempo y distancia */
+.route-example .route-details {
+    text-align: right;
+    font-size: 1.1rem;
+    color: var(--texto);
+    font-weight: 600;
+    margin-top: 15px;
+    border-top: 1px dashed var(--gris);
+    padding-top: 15px;
+}
+
+/* Aclaración final (Google Maps) */
+.route-demo-card .route-demo-disclaimer {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.route-demo-card .route-demo-disclaimer i {
+    color: var(--azul);
+    margin-right: 5px;
+}
+
+/* ================================================= */
+/* ==== FIN DE ESTILOS DE TARJETA DE RUTA ==== */
+/* ================================================= */
+
+
+/* Help Center */
+.help-center {
+    padding: 80px 0;
+}
+
+/* ============================================== */
+/* ===== NUEVOS ESTILOS CENTRO DE AYUDA (FAQ) ===== */
+/* ============================================== */
+
+/* Layout de 2 columnas (FAQ y Formulario) */
+.help-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    gap: 40px; /* Espacio entre columnas */
+    align-items: flex-start; /* Alinea los items arriba */
+}
+
+/* Contenedor del acordeón */
+.faq-accordion {
+    width: 100%;
+}
+
+/* Cada item (pregunta + respuesta) */
+.faq-item {
+    border-bottom: 1px solid var(--gris);
+}
+
+/* El botón de la pregunta */
+.faq-question {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+}
+
+.faq-question span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+.faq-question i {
+    font-size: 1rem;
+    color: var(--azul);
+    transition: transform 0.3s ease; /* Animación del ícono + */
+}
+
+/* La respuesta (oculta por defecto) */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out; /* Animación de despliegue */
+}
+
+.faq-answer p {
+    padding: 0 10px 20px 0;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* Estilos para el formulario en la columna derecha */
+.contact-form {
+    background-color: var(--blanco);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    max-width: 100%; /* Ya no tiene max-width de 600px */
+    margin: 0; /* Resetea el margen */
+}
+
+.contact-form h3 {
+    text-align: left; /* Alineado a la izquierda */
+    margin-bottom: 5px;
+}
+
+.contact-form p {
+    text-align: left; /* Alineado a la izquierda */
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+/* ===== ESTILOS PARA EL BLOQUE DE TELÉFONO ===== */
+.phone-support {
+    display: flex;
+    align-items: center;
+    background-color: var(--gris-claro);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+.phone-support i {
+    font-size: 1.5rem;
+    color: var(--azul);
+    margin-right: 15px;
+}
+.phone-support div {
+    display: flex;
+    flex-direction: column;
+}
+.phone-support strong {
+    font-weight: 600;
+    color: var(--texto);
+}
+.phone-support a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--azul-oscuro);
+    text-decoration: none;
+}
+.phone-support a:hover {
+    text-decoration: underline;
+}
+/* =============================================== */
+
+/* --- Estilos de JS (cuando está activo) --- */
+.faq-item.active .faq-answer {
+    max-height: 200px; /* Altura máxima para la respuesta (ajusta si es necesario) */
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(45deg); /* Gira el ícono + a una X */
+}
+
+/* ============================================== */
+/* ===== FIN DE ESTILOS CENTRO DE AYUDA ===== */
+/* ============================================== */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--gris);
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+/* Footer */
+footer {
+    background-color: var(--azul);
+    color: var(--blanco);
+    padding: 50px 0 20px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: var(--blanco);
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.footer-column ul li a:hover {
+    opacity: 0.8;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--blanco);
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+    }
+    
+    nav ul {
+        margin-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        margin: 5px 10px;
+    }
+    
+    .product-container {
+        flex-direction: column;
+    }
+
+    /* ===== REGLAS RESPONSIVE PARA EL HERO ===== */
+    .hero-container {
+        flex-direction: column; /* Apila las columnas en móvil */
+        text-align: center; /* Centra el texto en móvil */
+    }
+
+    .hero-text {
+        margin-bottom: 30px; /* Espacio entre texto e imagen en móvil */
+        animation: none; /* Desactiva animación en móvil si se prefiere */
+    }
+
+    .hero-image {
+        animation: none; /* Desactiva animación en móvil si se prefiere */
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    /* =========================================== */
+
+    /* ===== REGLAS RESPONSIVE PARA CENTRO DE AYUDA ===== */
+    .help-layout {
+        grid-template-columns: 1fr; /* Apila las columnas en móvil */
+        gap: 50px; /* Aumenta el espacio entre el FAQ y el formulario */
+    }
+
+    .contact-form {
+        padding: 25px;
+    }
+    /* =========================================== */
+    
+    .modal-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Clase para ocultar contenido principal */
+.hidden {
+    display: none;
+}

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Safe - Pulsera Rastreadora GPS para Niños</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="splash-screen" id="splashScreen">
+        <video id="introVideo" 
+               src="https://res.cloudinary.com/dts4amixw/video/upload/v1762892830/Connect_Safe_kfdlxd.mp4" 
+               autoplay 
+               muted 
+               playsinline>
+        </video>
+    </div>
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Términos y Condiciones & Política de Privacidad</h2>
+            </div>
+            <div class="modal-body">
+                <p>Bienvenido a Connect Safe. Antes de utilizar nuestros servicios, lea detenidamente los siguientes términos y condiciones y política de privacidad.</p>
+                
+                <h3>1. Aceptación de los Términos</h3>
+                <p>Al acceder y utilizar el servicio Connect Safe, usted acepta estar sujeto a estos términos y condiciones de uso, todas las leyes y regulaciones aplicables, y acepta que es responsable del cumplimiento de las leyes locales aplicables.</p>
+                
+                <h3>2. Uso del Servicio</h3>
+                <p>El servicio Connect Safe está destinado únicamente para el seguimiento de niños bajo su custodia legal. Queda prohibido utilizar el servicio para cualquier propósito ilegal o no autorizado.</p>
+                
+                <h3>3. Suscripción y Pagos</h3>
+                <p>El servicio Connect Safe opera bajo un modelo de suscripción. Los pagos se realizarán de forma mensual o anual, según el plan seleccionado. Puede cancelar su suscripción en cualquier momento.</p>
+                
+                <h3>4. Limitación de Responsabilidad</h3>
+                <p>Connect Safe no será responsable de daños indirectos, incidentales, especiales, consecuentes o punitivos, incluida la pérdida de beneficios, datos o uso.</p>
+                
+                <h3>5. Política de Privacidad</h3>
+                <p>Recopilamos información que usted nos proporciona directamente, como datos de registro, información de perfil y datos de ubicación del dispositivo. También recopilamos automáticamente información sobre el uso del servicio.</p>
+                
+                <h3>6. Uso de la Información</h3>
+                <p>Utilizamos la información recopilada para:</p>
+                <ul>
+                    <li>Proporcionar, mantener y mejorar nuestros servicios</li>
+                    <li>Procesar transacciones y enviar información relacionada</li>
+                    <li>Enviar mensajes administrativos y actualizaciones</li>
+                    <li>Personalizar y mejorar la experiencia del usuario</li>
+                    <li>Monitorear y analizar tendencias de uso</li>
+                </ul>
+                
+                <h3>7. Compartición de Información</h3>
+                <p>No vendemos, comerciamos ni transferimos a terceros su información personal identificable. Esto no incluye a terceros de confianza que nos ayudan a operar nuestro sitio web o conducir nuestro negocio, siempre que esas partes acuerden mantener esta información confidencial.</p>
+                
+                <h3>8. Seguridad de la Información</h3>
+                <p>Implementamos una variedad de medidas de seguridad para mantener la seguridad de su información personal. Utilizamos cifrado para proteger la información transmitida en línea y también protegemos su información fuera de línea.</p>
+                
+                <h3>9. Sus Derechos</h3>
+                <p>Usted tiene derecho a acceder, corregir o eliminar su información personal. Puede hacerlo accediendo a la configuración de su cuenta o contactándonos directamente.</p>
+                
+                <h3>10. Cambios a esta Política</h3>
+                <p>Podemos actualizar nuestra política de privacidad periódicamente. Le notificaremos cualquier cambio publicando la nueva política de privacidad en esta página.</p>
+                
+                <h3>11. Ley Aplicable</h3>
+                <p>Estos términos se regirán e interpretarán de acuerdo con las leyes del país, sin tener en cuenta sus disposiciones sobre conflictos de leyes.</p>
+                
+                <h3>12. Contacto</h3>
+                <p>Si tiene alguna pregunta sobre estos términos o política de privacidad, puede contactarnos a través de nuestro centro de ayuda o por WhatsApp.</p>
+            </div>
+            <div class="modal-footer">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="acceptTerms">
+                    <label for="acceptTerms">He leído y acepto los términos y condiciones y política de privacidad</label>
+                </div>
+                <button class="btn" id="acceptBtn" disabled>Aceptar y Continuar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainContent" class="hidden">
+        <header>
+            <div class="container header-container">
+                <div class="logo">
+                    <img src="https://res.cloudinary.com/dts4amixw/image/upload/v1762895061/Captura_de_pantalla_2025-11-11_144650_mdusu0.png" alt="Connect Safe Logo" class="logo-img">
+                    <h1>Connect Safe</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#producto">Producto</a></li>
+                        <li><a href="#caracteristicas">Características</a></li>
+                        <li><a href="#ayuda">Centro de Ayuda</a></li>
+                        <li><a href="#" id="showTermsFooter">Términos</a></li>
+                    </ul>
+                </nav>
+                <a href="https://wa.me/522331162768?text=Hola,%20me%20interesa%20la%20pulsera%20Connect%20Safe" class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                </a>
+            </div>
+        </header>
+
+        <section class="hero" id="inicio">
+            <div class="container">
+                <div class="hero-container">
+                    <div class="hero-text">
+                        <h2>La seguridad de tus hijos en tus manos</h2>
+                        <p>Connect Safe es la pulsera rastreadora GPS diseñada especialmente para niños en edad preescolar. Monitorea su ubicación en tiempo real y mantén la tranquilidad que necesitas.</p>
+                        <a href="#producto" class="btn">Conoce más</a>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://res.cloudinary.com/dts4amixw/image/upload/v1762897406/Gemini_Generated_Image_mt09immt09immt09-removebg-preview_pl4aht.png" alt="Pulsera GPS Connect Safe para niños">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="caracteristicas">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Características Principales</h2>
+                    <p>Descubre todas las funcionalidades que hacen de Connect Safe la mejor opción para la seguridad de tus hijos</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Localización en Tiempo Real</h3>
+                        <p>Monitorea la ubicación de tu hijo en tiempo real desde tu smartphone con una precisión de hasta 5 metros.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>Alertas de Zona Segura</h3>
+                        <p>Recibe notificaciones inmediatas cuando tu hijo entre o salga de las zonas seguras predefinidas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <h3>Batería de Larga Duración</h3>
+                        <p>Hasta 48 horas de autonomía con una sola carga. Notificaciones de batería baja para que nunca te quedes sin seguimiento.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3>Rutas Cortas con Maps</h3>
+                        <p>Genera las rutas más cortas y seguras hacia la ubicación de tu hijo mediante integración con Google Maps.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3>Diseño Infantil</h3>
+                        <p>Pulsera cómoda, ligera y con diseños atractivos para que los niños la lleven con gusto.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Máxima Seguridad</h3>
+                        <p>Todos los datos están encriptados y protegidos. Tu privacidad es nuestra prioridad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="product" id="producto">
+            <div class="container product-container">
+                
+                <div class="product-image">
+                    <div class="pulsera-sketch">
+                        <div class="pulsera-band-top"></div>
+                        
+                        <div class="pulsera-display">
+                            <div class="screen">
+                                <div class="pulsera-shine-effect"></div>
+                                
+                                <div class="location-info">
+                                    <i class="fas fa-map-pin"></i>
+                                    <span id="location-display">Parque Central</span>
+                                </div>
+                                <div class="battery">
+                                    <div class="battery-level"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pulsera-band-bottom"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h2>Connect Safe - Pulsera Rastreadora GPS</h2>
+                    <p>Diseñada específicamente para niños en edad preescolar, nuestra pulsera combina tecnología avanzada con un diseño seguro y cómodo.</p>
+                    
+                    <div class="product-features">
+                        <div class="product-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Compatible con iOS y Android</span>
+                        </div>
+                        <div class="product-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Material hipoalergénico</span>
+                        </div>
+                        <div class="product-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Fácil de usar para niños</span>
+                        </div>
+                        <div class="product-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Trabaja junto con la App</span>
+                        </div>
+                    </div>
+                    
+                    <div class="route-demo-card">
+                        <i class="fas fa-route route-demo-icon"></i>
+                        <h3>Rutas Rápidas a tu Ubicación</h3>
+                        <p class="route-demo-description">
+                            En caso de alerta, la app genera la ruta más rápida desde tu teléfono 
+                            directo a la ubicación de tu hijo.
+                        </p>
+                        <div class="route-example">
+                            <div class="route-leg">
+                                <i class="fas fa-map-marker-alt" style="color: #4CAF50;"></i>
+                                <span>Tu Ubicación (Teléfono)</span>
+                            </div>
+                            <div class="route-dots">
+                                <span>●</span><span>●</span><span>●</span>
+                            </div>
+                            <div class="route-leg">
+                                <i class="fas fa-flag-checkered" style="color: var(--azul);"></i>
+                                <span>Ubicación de 'Nico' (Parque)</span>
+                            </div>
+                            <div class="route-details">
+                                <strong>8 min</strong> (2.5 km)
+                            </div>
+                        </div>
+                        <p class="route-demo-disclaimer">
+                            <i class="fas fa-info-circle"></i>
+                            Integración directa con Google Maps y Waze.
+                        </p>
+                    </div>
+                    
+                    <a href="https://wa.me/1234567890?text=Hola,%20quiero%20comprar%20la%20pulsera%20Connect%20Safe" class="btn btn-whatsapp" target="_blank" style="margin-top: 30px;">
+                        <i class="fab fa-whatsapp"></i> Comprar ahora
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="help-center" id="ayuda">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Centro de Ayuda</h2>
+                    <p>¿Tienes preguntas? Encuentra tus respuestas aquí o envíanos un mensaje.</p>
+                </div>
+                
+                <div class="help-layout">
+                    
+                    <div class="faq-accordion">
+                        
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>¿Cuál es el precio de Connect Safe?</span>
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Ofrecemos dos planes: un plan mensual de $199 MXN o un plan anual de $1,999 MXN (¡ahorras dos meses!). Ambos planes incluyen la pulsera y acceso completo a la app.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>¿Cómo funciona el rastreo GPS?</span>
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>La pulsera tiene un chip GPS integrado que envía su ubicación a nuestros servidores cada 30 segundos. Puedes ver esta ubicación en tiempo real desde nuestra aplicación móvil, disponible para iOS y Android.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>¿La pulsera es resistente al agua?</span>
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>¡Sí! La pulsera tiene una certificación IP67. Es resistente a salpicaduras, lluvia y puede sumergirse hasta 1 metro de agua por un máximo de 30 minutos. No recomendamos usarla para nadar en albercas profundas.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>¿En qué colores está disponible?</span>
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Actualmente, la pulsera Connect Safe está disponible en tres colores: Azul Océano, Rosa Pastel y Negro Carbón. Puedes elegir tu color preferido al momento de la compra.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="helpForm" 
+                        action="https://formspree.io/f/xrbrgrvj" 
+                        method="POST">
+                            
+                            <h3>¿Aún tienes dudas?</h3>
+                            <p>Envíanos un mensaje y te responderemos pronto.</p>
+    
+                            <div class="phone-support">
+                                <i class="fas fa-phone-alt"></i>
+                                <div>
+                                    <strong>Soporte Técnico Directo</strong>
+                                    <a href="tel:2331162768">233-116-2768</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo electrónico</label>
+                                <input type="email" id="email" name="correo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Asunto</label>
+                                <input type="text" id="subject" name="asunto" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensaje</label>
+                                <textarea id="message" name="mensaje" required></textarea>
+                            </div>
+                            
+                            <input type="hidden" name="_next" value="http://127.0.0.1:5500/index.html#ayuda">
+                            <input type="hidden" name="_captcha" value="false"> 
+                            <button type="submit" class="btn">Enviar mensaje</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="footer-container">
+                    <div class="footer-column">
+                        <h3>Connect Safe</h3>
+                        <p>La seguridad de tus hijos es nuestra prioridad. Tecnología confiable para padres responsables.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Enlaces Rápidos</h3>
+                        <ul>
+                            <li><a href="#inicio">Inicio</a></li>
+                            <li><a href="#producto">Producto</a></li>
+                            <li><a href="#caracteristicas">Características</a></li>
+                            <li><a href="#ayuda">Centro de Ayuda</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#" id="showTermsLink">Términos y Condiciones</a></li>
+                            <li><a href="#" id="showPrivacyLink">Política de Privacidad</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contacto</h3>
+                        <ul>
+                            <li><i class="fas fa-phone"></i> +52 (233)-116-2768</li>
+                            <li><i class="fas fa-envelope"></i> info@connectsafe.com</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Zacapoaxtla, Puebla, México</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Connect Safe. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
